@@ -2,8 +2,10 @@
 FROM golang:1.16-alpine AS builder
 
 ENV CGO_ENABLED=0                         \
+    NodeType=V2ray                        \
     UserNODE_ID=99                        \
     Userdomain=https://baidu.com          \
+    EnableProxyProtocol=false             \
     Usermukey=key
 
 WORKDIR /app
