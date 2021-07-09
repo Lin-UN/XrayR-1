@@ -20,7 +20,7 @@ RUN  apk --update --no-cache add tzdata ca-certificates \
     && cp  /usr/bin/envsubst  /usr/local/bin/
 
 COPY --from=builder /app/XrayR /usr/local/bin
-COPY config.yml /etc/XrayR
+COPY /app/config.yml /etc/XrayR/
 
 RUN envsubst < /etc/XrayR/config.yml > /etc/XrayR/userconfig.yml
 
