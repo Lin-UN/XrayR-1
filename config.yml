@@ -16,7 +16,7 @@ Nodes:
       ApiHost: "${Userdomain}"
       ApiKey: "${Usermukey}"
       NodeID: ${UserNODE_ID}
-      NodeType: V2ray # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin
+      NodeType: ${NodeType} # Node type: V2ray, Shadowsocks, Trojan, Shadowsocks-Plugin
       Timeout: 30 # Timeout for the api request
       EnableVless: false # Enable Vless for V2ray Type
       EnableXTLS: false # Enable XTLS for V2ray and Trojan
@@ -29,7 +29,7 @@ Nodes:
       UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
       EnableDNS: false # Use custom DNS config, Please ensure that you set the dns.json well
       DNSType: AsIs # AsIs, UseIP, UseIPv4, UseIPv6, DNS strategy
-      EnableProxyProtocol: false # Only works for WebSocket and TCP
+      EnableProxyProtocol: ${EnableProxyProtocol} # Only works for WebSocket and TCP
       EnableFallback: false # Only support for Trojan and Vless
       FallBackConfigs:  # Support multiple fallbacks
         -
