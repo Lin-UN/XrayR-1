@@ -26,7 +26,5 @@ COPY --from=builder /app/XrayR /usr/local/bin
 COPY config.yml /etc/XrayR/
 
 #替换环境变量
-CMD envsubst < /etc/XrayR/config.yml > /etc/XrayR/userconfig.yml
-
-#程序入口
-ENTRYPOINT [ "XrayR", "--config", "/etc/XrayR/userconfig.yml"]
+CMD envsubst < /etc/XrayR/config.yml > /etc/XrayR/userconfig.yml \
+    && XrayR --config /etc/XrayR/userconfig.yml
