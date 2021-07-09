@@ -16,7 +16,7 @@ RUN apk --no-cache add gettext \
 #复制配置
 COPY config.yml /etc/XrayR/
 #替换环境变量
-RUN envsubst < /etc/XrayR/config.yml > /etc/XrayR/userconfig.yml
+CMD envsubst < /etc/XrayR/config.yml > /etc/XrayR/userconfig.yml
 
 RUN go mod download
 RUN go build -v -o XrayR -trimpath -ldflags "-s -w -buildid=" ./main
