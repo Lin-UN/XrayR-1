@@ -17,8 +17,8 @@ RUN  apk --update --no-cache add tzdata ca-certificates \
     && cp  /usr/bin/envsubst  /usr/local/bin/
 
 #设置环境变量
-ENV UserNODE_ID="97"                        \
-    Userdomain="https://baidu.com/"         \
+ENV UserNODE_ID="99"                        \
+    Userdomain="https://baidu.com"          \
     Usermukey="key"
 
 #配置主文件和配置文件
