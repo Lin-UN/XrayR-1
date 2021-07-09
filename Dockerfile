@@ -1,10 +1,10 @@
 # Build go
 FROM golang:1.16-alpine AS builder
 
-ENV CGO_ENABLED=0                           \
-    UserNODE_ID="99"                        \
-    Userdomain="https://baidu.com"          \
-    Usermukey="key"
+ENV CGO_ENABLED=0                         \
+    UserNODE_ID=99                        \
+    Userdomain=https://baidu.com          \
+    Usermukey=key
 
 WORKDIR /app
 COPY . .
