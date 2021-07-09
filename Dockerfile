@@ -9,11 +9,13 @@ ENV CGO_ENABLED=0                           \
     Userdomain="https://baidu.com"          \
     Usermukey="key"
     
-RUN apk --no-cache add gettext \
-    && cp  /usr/bin/envsubst  /usr/local/bin/
-
 WORKDIR /app
 COPY . .
+
+#安装环境变量读取
+RUN apk --no-cache add gettext \
+    && cp  /usr/bin/envsubst  /usr/local/bin/
+    
 #复制配置
 COPY config.yml /etc/XrayR/
 #替换环境变量
