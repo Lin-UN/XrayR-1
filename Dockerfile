@@ -3,10 +3,7 @@ FROM golang:1.16-alpine AS builder
 
 WORKDIR /app
 COPY . .
-ENV CGO_ENABLED=0                           \
-    UserNODE_ID="97"                        \
-    Userdomain="https://baidu.com/"         \
-    Usermukey="key"               
+ENV CGO_ENABLED=0   
     
 RUN go mod download
 RUN go build -v -o XrayR -trimpath -ldflags "-s -w -buildid=" ./main
@@ -19,9 +16,17 @@ RUN  apk --update --no-cache add tzdata ca-certificates \
     && apk --no-cache add gettext \
     && cp  /usr/bin/envsubst  /usr/local/bin/
 
+#设置环境变量
+ENV UserNODE_ID="97"                        \
+    Userdomain="https://baidu.com/"         \
+    Usermukey="key"
+
+#配置主文件和配置文件
 COPY --from=builder /app/XrayR /usr/local/bin
 COPY config.yml /etc/XrayR/
 
+#替换环境变量
 RUN envsubst < /etc/XrayR/config.yml > /etc/XrayR/userconfig.yml
 
+#程序入口
 ENTRYPOINT [ "XrayR", "--config", "/etc/XrayR/userconfig.yml"]
