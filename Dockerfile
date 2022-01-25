@@ -5,6 +5,7 @@ ENV CGO_ENABLED=0                         \
     NodeType=V2ray                        \
     UserNODE_ID=99                        \
     Userdomain=https://baidu.com          \
+    CertMode=none                         \
     EnableProxyProtocol=false             \
     Usermukey=key
 
